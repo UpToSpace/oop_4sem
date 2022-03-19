@@ -133,8 +133,7 @@ namespace laba2
                 Add(disciplineClone);
 
                 Discipline discipline1 = new Discipline(); // abstract factory
-                discipline1.Lector = discipline1.CreateLector() as Lector;
-                discipline1.Literature = discipline1.CreateLiterature() as Literature;
+                AbstractFactory.Client client = new AbstractFactory.Client(discipline1);
                 //Add(discipline1);
 
                 Discipline decorator = new Decorator.Decorator(disciplines[0]); // decorator
