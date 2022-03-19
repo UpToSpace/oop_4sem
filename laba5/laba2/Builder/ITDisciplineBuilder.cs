@@ -10,7 +10,7 @@ namespace laba2
     {
         public override void SetFields(string name, int course, string specciality, int lections, int labs, string semester1, string semester2, string control)
         {
-            Discipline.Name = name;
+            Discipline.Name = name; 
             Discipline.Course = course;
             Discipline.Speciality = specciality;
             Discipline.Lections = lections;

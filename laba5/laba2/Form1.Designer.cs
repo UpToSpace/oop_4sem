@@ -103,11 +103,13 @@ namespace laba2
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             courseLabel = new System.Windows.Forms.Label();
             labsLabel = new System.Windows.Forms.Label();
             lectionsLabel = new System.Windows.Forms.Label();
@@ -136,7 +138,7 @@ namespace laba2
             // courseLabel
             // 
             courseLabel.AutoSize = true;
-            courseLabel.Location = new System.Drawing.Point(33, 98);
+            courseLabel.Location = new System.Drawing.Point(61, 94);
             courseLabel.Name = "courseLabel";
             courseLabel.Size = new System.Drawing.Size(57, 17);
             courseLabel.TabIndex = 20;
@@ -145,7 +147,7 @@ namespace laba2
             // labsLabel
             // 
             labsLabel.AutoSize = true;
-            labsLabel.Location = new System.Drawing.Point(47, 126);
+            labsLabel.Location = new System.Drawing.Point(75, 122);
             labsLabel.Name = "labsLabel";
             labsLabel.Size = new System.Drawing.Size(43, 17);
             labsLabel.TabIndex = 22;
@@ -154,7 +156,7 @@ namespace laba2
             // lectionsLabel
             // 
             lectionsLabel.AutoSize = true;
-            lectionsLabel.Location = new System.Drawing.Point(41, 178);
+            lectionsLabel.Location = new System.Drawing.Point(56, 176);
             lectionsLabel.Name = "lectionsLabel";
             lectionsLabel.Size = new System.Drawing.Size(65, 17);
             lectionsLabel.TabIndex = 24;
@@ -163,7 +165,7 @@ namespace laba2
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(41, 59);
+            nameLabel.Location = new System.Drawing.Point(69, 55);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(49, 17);
             nameLabel.TabIndex = 26;
@@ -172,7 +174,7 @@ namespace laba2
             // semester1Label
             // 
             semester1Label.AutoSize = true;
-            semester1Label.Location = new System.Drawing.Point(223, 59);
+            semester1Label.Location = new System.Drawing.Point(248, 55);
             semester1Label.Name = "semester1Label";
             semester1Label.Size = new System.Drawing.Size(80, 17);
             semester1Label.TabIndex = 28;
@@ -181,7 +183,7 @@ namespace laba2
             // semester2Label
             // 
             semester2Label.AutoSize = true;
-            semester2Label.Location = new System.Drawing.Point(223, 89);
+            semester2Label.Location = new System.Drawing.Point(248, 85);
             semester2Label.Name = "semester2Label";
             semester2Label.Size = new System.Drawing.Size(80, 17);
             semester2Label.TabIndex = 30;
@@ -190,7 +192,7 @@ namespace laba2
             // specialityLabel
             // 
             specialityLabel.AutoSize = true;
-            specialityLabel.Location = new System.Drawing.Point(342, 52);
+            specialityLabel.Location = new System.Drawing.Point(367, 48);
             specialityLabel.Name = "specialityLabel";
             specialityLabel.Size = new System.Drawing.Size(72, 17);
             specialityLabel.TabIndex = 32;
@@ -313,7 +315,7 @@ namespace laba2
             "2",
             "3",
             "4"});
-            this.courseComboBox.Location = new System.Drawing.Point(96, 95);
+            this.courseComboBox.Location = new System.Drawing.Point(124, 92);
             this.courseComboBox.Name = "courseComboBox";
             this.courseComboBox.Size = new System.Drawing.Size(121, 24);
             this.courseComboBox.TabIndex = 21;
@@ -321,7 +323,7 @@ namespace laba2
             // labsNumericUpDown
             // 
             this.labsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.disciplineBindingSource, "Labs", true));
-            this.labsNumericUpDown.Location = new System.Drawing.Point(96, 126);
+            this.labsNumericUpDown.Location = new System.Drawing.Point(124, 122);
             this.labsNumericUpDown.Name = "labsNumericUpDown";
             this.labsNumericUpDown.Size = new System.Drawing.Size(121, 22);
             this.labsNumericUpDown.TabIndex = 23;
@@ -329,7 +331,7 @@ namespace laba2
             // lectionsTrackBar
             // 
             this.lectionsTrackBar.LargeChange = 10;
-            this.lectionsTrackBar.Location = new System.Drawing.Point(99, 178);
+            this.lectionsTrackBar.Location = new System.Drawing.Point(124, 221);
             this.lectionsTrackBar.Maximum = 100;
             this.lectionsTrackBar.Name = "lectionsTrackBar";
             this.lectionsTrackBar.Size = new System.Drawing.Size(170, 56);
@@ -340,7 +342,7 @@ namespace laba2
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.disciplineBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(96, 59);
+            this.nameTextBox.Location = new System.Drawing.Point(124, 55);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(121, 22);
             this.nameTextBox.TabIndex = 27;
@@ -348,7 +350,7 @@ namespace laba2
             // semester1CheckBox
             // 
             this.semester1CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.disciplineBindingSource, "Semester1", true));
-            this.semester1CheckBox.Location = new System.Drawing.Point(309, 54);
+            this.semester1CheckBox.Location = new System.Drawing.Point(334, 50);
             this.semester1CheckBox.Name = "semester1CheckBox";
             this.semester1CheckBox.Size = new System.Drawing.Size(27, 24);
             this.semester1CheckBox.TabIndex = 29;
@@ -357,7 +359,7 @@ namespace laba2
             // semester2CheckBox
             // 
             this.semester2CheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.disciplineBindingSource, "Semester2", true));
-            this.semester2CheckBox.Location = new System.Drawing.Point(309, 84);
+            this.semester2CheckBox.Location = new System.Drawing.Point(334, 80);
             this.semester2CheckBox.Name = "semester2CheckBox";
             this.semester2CheckBox.Size = new System.Drawing.Size(27, 24);
             this.semester2CheckBox.TabIndex = 31;
@@ -372,15 +374,15 @@ namespace laba2
             "ISIT",
             "DAIVY",
             "MOBILES"});
-            this.specialityCheckedListBox.Location = new System.Drawing.Point(345, 72);
+            this.specialityCheckedListBox.Location = new System.Drawing.Point(370, 68);
             this.specialityCheckedListBox.Name = "specialityCheckedListBox";
-            this.specialityCheckedListBox.Size = new System.Drawing.Size(121, 72);
+            this.specialityCheckedListBox.Size = new System.Drawing.Size(121, 89);
             this.specialityCheckedListBox.TabIndex = 33;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 158);
+            this.label1.Location = new System.Drawing.Point(161, 156);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 34;
@@ -462,7 +464,7 @@ namespace laba2
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 28);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1166, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1196, 24);
             this.menuStrip1.TabIndex = 49;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -474,7 +476,7 @@ namespace laba2
             this.aboutToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1166, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1196, 28);
             this.menuStrip2.TabIndex = 50;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -672,9 +674,9 @@ namespace laba2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(533, 192);
+            this.textBox1.Location = new System.Drawing.Point(614, 192);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 22);
+            this.textBox1.Size = new System.Drawing.Size(228, 22);
             this.textBox1.TabIndex = 52;
             this.textBox1.Visible = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -682,7 +684,7 @@ namespace laba2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(547, 155);
+            this.label4.Location = new System.Drawing.Point(635, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 53;
@@ -691,9 +693,9 @@ namespace laba2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(273, 173);
+            this.button1.Location = new System.Drawing.Point(411, 172);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 42);
+            this.button1.Size = new System.Drawing.Size(197, 42);
             this.button1.TabIndex = 54;
             this.button1.Text = "save the result";
             this.button1.UseVisualStyleBackColor = true;
@@ -710,10 +712,11 @@ namespace laba2
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton6});
+            this.toolStripButton6,
+            this.toolStripSplitButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 52);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(30, 564);
+            this.toolStrip1.Size = new System.Drawing.Size(40, 564);
             this.toolStrip1.TabIndex = 55;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -723,7 +726,7 @@ namespace laba2
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(27, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(37, 24);
             this.toolStripButton1.Text = "sort by lection numbers";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -733,8 +736,8 @@ namespace laba2
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(27, 24);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(37, 24);
+            this.toolStripButton2.Text = "sort by control";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
@@ -743,8 +746,8 @@ namespace laba2
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(27, 24);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(37, 24);
+            this.toolStripButton3.Text = "search by lector";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
@@ -753,8 +756,8 @@ namespace laba2
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(27, 24);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(37, 24);
+            this.toolStripButton4.Text = "search by semester";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
@@ -763,8 +766,8 @@ namespace laba2
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(27, 24);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(37, 24);
+            this.toolStripButton5.Text = "search by course";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripButton6
@@ -773,9 +776,18 @@ namespace laba2
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(27, 24);
+            this.toolStripButton6.Size = new System.Drawing.Size(37, 24);
             this.toolStripButton6.Text = "clear";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(37, 24);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
             // statusStrip1
             // 
@@ -784,9 +796,9 @@ namespace laba2
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3});
-            this.statusStrip1.Location = new System.Drawing.Point(30, 590);
+            this.statusStrip1.Location = new System.Drawing.Point(40, 590);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1136, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1156, 26);
             this.statusStrip1.TabIndex = 56;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -795,10 +807,6 @@ namespace laba2
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // disciplineBindingSource
-            // 
-            this.disciplineBindingSource.DataSource = typeof(laba2.Discipline);
             // 
             // toolStripStatusLabel2
             // 
@@ -812,11 +820,26 @@ namespace laba2
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(290, 172);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 43);
+            this.button2.TabIndex = 57;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // disciplineBindingSource
+            // 
+            this.disciplineBindingSource.DataSource = typeof(laba2.Discipline);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1166, 616);
+            this.ClientSize = new System.Drawing.Size(1196, 616);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button1);
@@ -945,6 +968,8 @@ namespace laba2
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
     }
 }
 

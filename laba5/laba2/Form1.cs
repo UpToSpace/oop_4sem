@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using laba2.Memento;
 // TODO Добавить строку состояния с тестовыми сообщениями последнем выполненном действии.Добавить 
 // возможность скрывать и закреплять панель инструментов.
 
@@ -15,13 +16,14 @@ namespace laba2
     {
         string path = "disciplines.json";
         List<Discipline> disciplines = new List<Discipline>();
-        string searchParameter = "";
+        string searchParameter = "", lastAction = "";
+        History history = new History();
         public Form1()
         {
             InitializeComponent();
-
+            
             Settings.GetSettings(this);
-
+            lastAction = "Form opened";
             courseComboBox.SelectedItem = courseComboBox.Items[0];
             cafedraComboBox1.SelectedItem = cafedraComboBox1.Items[0];
 
@@ -34,7 +36,7 @@ namespace laba2
         {
             toolStripStatusLabel1.Text = DateTime.Now.ToString();
             toolStripStatusLabel2.Text = "Objects number: " + Convert.ToString(dataGridView1.Rows.Count - 1);
-            //toolStripStatusLabel3.Text =
+            toolStripStatusLabel3.Text = lastAction;
         }
         private bool Check()
         {
@@ -64,9 +66,11 @@ namespace laba2
             fioTextBox1.Clear();
             nameTextBox1.Clear();
             authorTextBox.Clear();
+            lastAction = "form cleared";
         }
         private Discipline Build(DisciplineBuilder disciplineBuilder)
         {
+            disciplineBuilder.CreateDiscipline();
             disciplineBuilder.SetFields(nameTextBox.Text, Convert.ToInt32(courseComboBox.SelectedItem), Convert.ToString(specialityCheckedListBox.SelectedItem),
                 Convert.ToInt32(lectionsTrackBar.Value), Convert.ToInt32(labsNumericUpDown.Value), semester1CheckBox.Checked.ToString(),
                 semester2CheckBox.Checked.ToString(), ekzamen.Checked ? ekzamen.Text : zachet.Text);
@@ -76,6 +80,7 @@ namespace laba2
         }
         private void save_Click(object sender, EventArgs e)
         {
+            lastAction = "button saved clicked";
             if (!Check())
             {
                 MessageBox.Show("smth wrong","Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -112,6 +117,8 @@ namespace laba2
         }
         private void show_Click(object sender, EventArgs e)
         {
+            lastAction = "button show clicked";
+            history.FormHistory.Push(SaveState());
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
             using (StreamReader sw = new StreamReader(path))
@@ -119,26 +126,36 @@ namespace laba2
                 while (!sw.EndOfStream)
                 {
                     Discipline discipline = JsonConvert.DeserializeObject<Discipline>(sw.ReadLine());
-
-                    Discipline disciplineClone = discipline.Clone() as Discipline; // clone
-
-                    Discipline discipline1 = new Discipline(); // abstract factory
-                    discipline1.Lector = discipline1.CreateLector() as Lector;
-                    discipline1.Literature = discipline1.CreateLiterature() as Literature;
-
-                    Add(discipline1);
                     Add(discipline);
-                    Add(disciplineClone);
                 }
+
+                Discipline disciplineClone = disciplines[0].Clone() as Discipline; // clone
+                Add(disciplineClone);
+
+                Discipline discipline1 = new Discipline(); // abstract factory
+                discipline1.Lector = discipline1.CreateLector() as Lector;
+                discipline1.Literature = discipline1.CreateLiterature() as Literature;
+                //Add(discipline1);
+
+                Discipline decorator = new Decorator.Decorator(disciplines[0]); // decorator
+                Add(decorator);
             }
         }
-
+        public Mori SaveState()
+        {
+            return new Mori(ref disciplines);
+        }
+        public void RestoreState(Mori state)
+        {
+            disciplines = state.disciplines;
+        }
         private void lectionsTrackBar_Scroll(object sender, EventArgs e)
         {
             label1.Text = "current: " + Convert.ToString(lectionsTrackBar.Value);
         }
         private void Search(object sender)
         {
+            history.FormHistory.Push(SaveState());
             textBox1.Show();
             label4.Show();
             searchParameter = sender.ToString();
@@ -160,6 +177,7 @@ namespace laba2
 
         public void Sort(object sender)
         {
+            history.FormHistory.Push(SaveState());
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
             IEnumerable<Discipline> list = new List<Discipline>();
@@ -199,17 +217,17 @@ namespace laba2
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            IEnumerable<Discipline> list = new List<Discipline>();
+            List<Discipline> list = new List<Discipline>();
             switch (searchParameter)
             {
                 case "lector":
-                    list = disciplines.Where(ev => ev.Lector.Fio.Contains(textBox1.Text));
+                    list = disciplines.Where(ev => ev.Lector.Fio.Contains(textBox1.Text)).ToList();
                     break;
                 case "semester":
-                    list = disciplines.Where(ev => ev.str.Contains(textBox1.Text));
+                    list = disciplines.Where(ev => ev.str.Contains(textBox1.Text)).ToList();
                     break;
                 case "course":
-                    list = disciplines.Where(ev => Convert.ToString(ev.Course).Contains(textBox1.Text));
+                    list = disciplines.Where(ev => Convert.ToString(ev.Course).Contains(textBox1.Text)).ToList();
                     break;
                 default:
                     break;
@@ -228,6 +246,7 @@ namespace laba2
 
         private void controlToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lastAction = sender.ToString();
             Sort(sender);
         }
 
@@ -285,6 +304,26 @@ namespace laba2
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e) 
+        {
+            try
+            {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            RestoreState(history.FormHistory.Pop());
+            foreach (Discipline discipline in disciplines)
+            {
+                var i = discipline.ShowRow();
+                dataGridView1.Rows.Add(i.Item1, i.Item2, i.Item3, i.Item4, i.Item5, i.Item6, i.Item7, i.Item8, i.Item9, i.Item10, i.Item11, i.Item12, i.Item13);
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

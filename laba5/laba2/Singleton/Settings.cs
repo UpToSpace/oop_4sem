@@ -11,7 +11,7 @@ namespace laba2
         private static Settings settings;
         private Settings(Form1 form)
         {
-            form.BackColor = System.Drawing.Color.Beige;
+            form.BackColor = System.Drawing.Color.AliceBlue;
             form.Text = "Its a Form";
             form.Icon = new System.Drawing.Icon(@"D:\University\4\oop\laba4\laba2\Blackvariant-Button-Ui-System-Folders-Drives-Developer.ico");
         }

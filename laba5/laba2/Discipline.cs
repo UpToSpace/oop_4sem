@@ -9,7 +9,7 @@ namespace laba2
     public class Discipline : AbstractFactory.AbstractFactory, IDiscipline
     {
         public string str;
-        [Required, RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "only letters available")]
+        [Required, Name]
         public string Name { get; set; }
         [Required]
         public int Course { get; set; }
@@ -53,7 +53,10 @@ namespace laba2
             Literature.Author = author;
             Literature.Year = year;
         }
-        public Discipline() {}
+        public Discipline() {
+            this.Lector = new Lector();
+            this.Literature = new Literature();
+        }
         private string SetSemesters()
         {
             if (Semester1 == "True")
