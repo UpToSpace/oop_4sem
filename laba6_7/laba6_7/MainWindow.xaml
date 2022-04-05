@@ -1,0 +1,161 @@
+﻿<Window x:Class="laba6_7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba6_7"
+        xmlns:util="clr-namespace:laba6_7.templates"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        x:Name="mainWindow"
+        Height="700" 
+        Width="1350"
+        MinWidth="450"
+        MinHeight="500"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="{StaticResource Merriweather}"
+        Background="#800000">
+    <Grid>
+        <!--main-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="23*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--navbar-->
+        <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        <Viewbox                
+            Grid.Column="0"
+            Grid.Row="1"
+            Margin="3"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom">
+            <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\logo.png"
+               x:Name="logo"
+                Height="47"
+               Width="47"           
+               />
+        </Viewbox>
+
+        <!--a search-->
+        <Grid 
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid 
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="#9B4E4E"
+                >
+                <TextBox 
+                    Background="Transparent"
+                   FontSize="14"
+                   Foreground="#fff"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Left"
+                   Margin="15 0 40 0"
+                   >
+                    Поиск
+                </TextBox>
+
+                <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\search.png" 
+            HorizontalAlignment="Right"
+                VerticalAlignment="Center" 
+                   Height="17"
+                   Width="17"
+                   Margin="0 0 12 0"/>
+            </Grid>
+        </Grid>
+
+        <!--filter-->
+        <DockPanel          
+            Grid.Column="1">
+            <Label FontSize="14"
+                   Foreground="#fff"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Right">
+                Фильтр
+            </Label>
+        </DockPanel>
+
+        <!--new-->
+        <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\new.png"
+               Grid.Column="2"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               Margin="2 0 0 0"
+               Height="26"
+               Width="26"/>
+
+        <!--lenguages-->
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Viewbox
+                Grid.Row="0"
+                HorizontalAlignment="Right">
+                <Label FontSize="16"
+                   Foreground="#fff">
+                    RU
+                </Label>
+            </Viewbox>
+            <Viewbox
+                Grid.Row="2"
+                HorizontalAlignment="Right">
+                <Label FontSize="16"
+                   Foreground="#fff">
+                    EN
+                </Label>
+            </Viewbox>
+        </Grid>
+        </Grid>
+
+        
+        
+        
+        
+        <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <WrapPanel ItemWidth="300" Orientation="Horizontal">
+                <!--a card-->
+                <Border>
+                <ContentControl
+                                Template="{StaticResource Card}"
+                                />
+                </Border>
+                
+            </WrapPanel>
+</ScrollViewer>
+
+
+        
+    </Grid>
+</Window>
