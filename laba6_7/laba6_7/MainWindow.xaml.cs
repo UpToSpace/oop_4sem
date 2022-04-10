@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,24 @@ namespace laba6_7
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BindingList<Picture> pictures;
         public MainWindow()
         {
             InitializeComponent();
         }
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            New Card = new New();
+            Card.Show();
+        }
 
+        private void mainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            pictures = new BindingList<Picture>()
+            {
+                new Picture(){Rating = 2, Name = "hey"}
+            };
+            PictureList.ItemsSource = pictures;
+        }
     }
 }

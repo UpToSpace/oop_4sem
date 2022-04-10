@@ -9,9 +9,10 @@ namespace laba6_7.templates
 {
     public partial class Items : ResourceDictionary
     {
-        public void More_Click()
+        private void More_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hello");
+            Card card = new Card();
+            card.Show();
         }
     }
 }
