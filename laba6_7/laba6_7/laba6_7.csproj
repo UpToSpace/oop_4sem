@@ -59,13 +59,17 @@
       <DependentUpon>New.xaml</DependentUpon>
     </Compile>
     <Compile Include="Picture.cs" />
-    <Compile Include="templates\Items.xaml.cs">
+    <Compile Include="dictionaries\Items.xaml.cs">
       <DependentUpon>Items.xaml</DependentUpon>
     </Compile>
     <Page Include="Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="dictionaries\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,11 +89,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="templates\Items.xaml">
+    <Page Include="dictionaries\Items.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="templates\Templates.xaml">
+    <Resource Include="dictionaries\Templates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>

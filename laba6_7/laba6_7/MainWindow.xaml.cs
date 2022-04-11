@@ -37,9 +37,10 @@ namespace laba6_7
         {
             pictures = new BindingList<Picture>()
             {
-                new Picture(){Rating = 2, Name = "hey"}
+                new Picture(){Rating = 2, Name = "hey", Author="dali", Category="j", Count=1, Image=@"D:\University\4\oop\laba6_7\laba6_7\pictures\memory.png", Price="3000", ShortName="hey"}
             };
             PictureList.ItemsSource = pictures;
+
         }
     }
 }

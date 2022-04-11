@@ -16,6 +16,7 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="{StaticResource Merriweather}"
         Background="#800000" Loaded="mainWindow_Loaded">
+
     <Grid>
         <!--main-->
         <Grid.RowDefinitions>
@@ -146,48 +147,28 @@
         </Grid>
         </Grid>
 
-        
-        
-        
-        
+
+
+
+
         <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <WrapPanel ItemWidth="300" 
-                       Orientation="Horizontal"
-                       >
-                <!--a card-->
-                <Border>
-                <ContentControl
-                                Template="{StaticResource Card}"
-                                />
-                </Border>
-                <Border>
-                    <ContentControl
-                                Template="{StaticResource Card}"
-                                />
-                </Border>
-                <Border>
-                    <ContentControl
-                                Template="{StaticResource Card}"
-                                />
-                </Border>
-                <ItemsControl x:Name="PictureList">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border>
-                                <TextBlock Text="{Binding Path=Rating}" />
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </WrapPanel>
-</ScrollViewer>
-
-
-        
+            <!--a card-->
+            <ItemsControl x:Name="PictureList">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemWidth="300" 
+                       Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <ContentControl Template="{StaticResource Card}"
+                                            />
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

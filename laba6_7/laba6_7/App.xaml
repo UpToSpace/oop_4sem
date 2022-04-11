@@ -10,8 +10,9 @@
             ./font/Merriweather-Regular.ttf #Merriweather
         </FontFamily>           
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="./templates/Templates.xaml" />
-                <ResourceDictionary Source="./templates/Items.xaml" />
+                <ResourceDictionary Source="./dictionaries/Templates.xaml" />
+                <ResourceDictionary Source="./dictionaries/Items.xaml" />
+                <ResourceDictionary Source="./dictionaries/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

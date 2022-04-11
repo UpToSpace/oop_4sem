@@ -3,7 +3,6 @@
                     xmlns:local="clr-namespace:laba6_7.templates"
                     x:Class="laba6_7.templates.Items"
                     >
-  
     <ControlTemplate x:Key="Card">
         <Grid>
             <Grid.RowDefinitions>
@@ -34,9 +33,8 @@
                     <Image
                         Grid.Row="0"
                 VerticalAlignment="Top"
-                Source="D:\University\4\oop\laba6_7\laba6_7\pictures\memory.png"
+                Source="{Binding Path = Image}"
                 Margin="12 12 12 0"/>
-
                     <Viewbox
                        Grid.Row="1"
                        HorizontalAlignment="Left"
@@ -47,9 +45,8 @@
                    Margin="12 0 2 0"
                            Grid.Row="1"
                        HorizontalAlignment="Left"
-                       VerticalAlignment="Bottom">
-                    Постоянство памяти
-                        </TextBlock>
+                       VerticalAlignment="Bottom"
+                            Text="{Binding Path = ShortName}"/>
                     </Viewbox>
                     <Viewbox
                         Grid.Row="2"
@@ -57,9 +54,8 @@
                         HorizontalAlignment="Left">
                         <TextBlock
                    Foreground="#fff"
-                   Margin="12 0 2 0">
-                    Сальвадор Дали
-                        </TextBlock>
+                   Margin="12 0 2 0"
+                            Text="{Binding Path = Author}"/>
                     </Viewbox>
                     <Viewbox
                             Grid.Row="3"
@@ -68,9 +64,8 @@
                         <TextBlock
                    Foreground="#fff"
                    Margin="12 0 2 0"
-                   HorizontalAlignment="Left">
-                            3000$
-                        </TextBlock>
+                   HorizontalAlignment="Left"
+                            Text="{Binding Path = Price}" />
                     </Viewbox>
 
                     <Viewbox

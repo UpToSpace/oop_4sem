@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace laba6_7.templates
 {
@@ -11,7 +12,8 @@ namespace laba6_7.templates
     {
         private void More_Click(object sender, RoutedEventArgs e)
         {
-            Card card = new Card();
+            Picture picture = (sender as Button).DataContext as Picture;
+            Card card = new Card(picture);
             card.Show();
         }
     }

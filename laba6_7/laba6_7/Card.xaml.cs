@@ -23,5 +23,33 @@ namespace laba6_7
         {
             InitializeComponent();
         }
+        public Card(Picture picture)
+        {
+            InitializeComponent();
+            Image.Source = new BitmapImage(new Uri(picture.Image));
+            Name.Text = picture.Name;
+            Author.Text = picture.Author;
+            Category.Text = picture.Category;
+            Rating.Text = Convert.ToString(picture.Rating);
+            Price.Text = picture.Price;
+            Count.Text = Convert.ToString(picture.Count);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            Save.Visibility = Visibility.Visible;
+            Name.IsEnabled = true;
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            Save.Visibility = Visibility.Hidden;
+            Name.IsEnabled = false;
+        }
     }
 }

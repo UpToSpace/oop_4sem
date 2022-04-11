@@ -6,8 +6,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba6_7"
         mc:Ignorable="d"
-        Title="Card" Height="450" Width="800">
+        Title="Card" Height="600" Width="444"
+        Background="#9B4E4E"
+        FontFamily="{StaticResource Merriweather}"
+        >
+
     <Grid>
-        
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="45*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="6" BorderBrush="#800000"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="0"
+                Grid.RowSpan="4"/>
+        <Image
+            x:Name="Image"
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+                />
+        <Grid Grid.Row="2"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource CardTextboxes}"
+            x:Name="Name" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            x:Name="Author" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            x:Name="Price" />
+            <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            x:Name="Category" />
+            <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            x:Name="Count" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            x:Name="Rating" />
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       >
+                Name
+            </TextBlock>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right">
+                <Button x:Name="Edit" 
+                        Background="Transparent"
+                        Click="Edit_Click">
+                    <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\edit.png" />
+                </Button>
+                <Button x:Name="Delete" 
+                        Background="Transparent"
+                        Click="Delete_Click">
+                    <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\delete.png" />
+                </Button>
+            </StackPanel>
+            <Button x:Name="Save"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Background="#800000" 
+                    Height="30"
+                    Width="90"
+                    Foreground="#fff"
+                    Visibility="Hidden"
+                    Click="Save_Click"
+                    >Save</Button>
+        </Grid>
     </Grid>
 </Window>
