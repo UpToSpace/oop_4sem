@@ -8,13 +8,11 @@ using System.Windows.Controls;
 
 namespace laba6_7.templates
 {
-    public partial class Items : ResourceDictionary
+    public partial class Items
     {
-        private void More_Click(object sender, RoutedEventArgs e)
+        public Items()
         {
-            Picture picture = (sender as Button).DataContext as Picture;
-            Card card = new Card(picture);
-            card.Show();
+            InitializeComponent();
         }
     }
 }

@@ -5,14 +5,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba6_7"
+        xmlns:p = "clr-namespace:laba6_7.Properties"
         mc:Ignorable="d"
         Title="Card" Height="600" Width="444"
         Background="#9B4E4E"
+        x:Name="card"
         FontFamily="{StaticResource Merriweather}"
         >
-
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="45*" />
@@ -34,6 +37,7 @@
             Grid.Row="1"
             Grid.Column="1"
             VerticalAlignment="Top"
+            Source="{Binding SelectedPicture.Image}"
                 />
         <Grid Grid.Row="2"
               Grid.Column="1">
@@ -54,33 +58,69 @@
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource CardTextboxes}"
-            x:Name="Name" />
+            x:Name="Name" 
+            Text="{Binding SelectedPicture.Name}"/>
         <TextBox
             Grid.Row="1"
             Grid.Column="1"
-            x:Name="Author" />
+            Style="{StaticResource CardTextboxes}"
+            x:Name="Author"
+            Text="{Binding SelectedPicture.Author}"/>
         <TextBox
             Grid.Row="2"
             Grid.Column="1"
-            x:Name="Price" />
+            Style="{StaticResource CardTextboxes}"
+            x:Name="Price" 
+            Text="{Binding SelectedPicture.Price}"/>
             <TextBox
             Grid.Row="3"
             Grid.Column="1"
-            x:Name="Category" />
+                Style="{StaticResource CardTextboxes}"
+            x:Name="Category" 
+                Text="{Binding SelectedPicture.Category}"/>
             <TextBox
             Grid.Row="4"
             Grid.Column="1"
-            x:Name="Count" />
+                Style="{StaticResource CardTextboxes}"
+            x:Name="Count" 
+                Text="{Binding SelectedPicture.Count}"/>
         <TextBox
             Grid.Row="5"
             Grid.Column="1"
-            x:Name="Rating" />
+            Style="{StaticResource CardTextboxes}"
+            x:Name="Rating" 
+            Text="{Binding SelectedPicture.Rating}"/>
+            
             <TextBlock Grid.Row="0"
                        Grid.Column="0" 
                        Style="{StaticResource CardTextBlocks}"
-                       >
-                Name
-            </TextBlock>
+                       Text="{x:Static p:Resources.Name}"
+                       />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Author}"
+                       />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Price}"
+                       />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Category}"
+                       />
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Count}"
+                       />
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Rating}"
+                       />
 
             <StackPanel Orientation="Horizontal"
                         Grid.Row="6"
@@ -88,12 +128,14 @@
                         HorizontalAlignment="Right">
                 <Button x:Name="Edit" 
                         Background="Transparent"
-                        Click="Edit_Click">
-                    <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\edit.png" />
+                        Command="{Binding EditCardCommand}"
+                        CommandParameter="{Binding SelectedPicture}">
+                <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\edit.png" />
                 </Button>
-                <Button x:Name="Delete" 
-                        Background="Transparent"
-                        Click="Delete_Click">
+                <Button x:Name="Delete"
+                        Command="{Binding RemovePictureCommand}"
+                        CommandParameter="{Binding SelectedPicture}"
+                        Background="Transparent">
                     <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\delete.png" />
                 </Button>
             </StackPanel>
@@ -105,8 +147,10 @@
                     Width="90"
                     Foreground="#fff"
                     Visibility="Hidden"
-                    Click="Save_Click"
-                    >Save</Button>
+                    Command="{Binding SaveChangesCardCommand}"
+                    CommandParameter="{Binding SelectedPicture}"
+                    Content="{x:Static p:Resources.Save}"
+                    />
         </Grid>
     </Grid>
 </Window>

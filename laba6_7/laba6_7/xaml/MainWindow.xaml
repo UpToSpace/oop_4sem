@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba6_7"
         xmlns:util="clr-namespace:laba6_7.templates"
+        xmlns:p = "clr-namespace:laba6_7.Properties"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Museum"
         x:Name="mainWindow"
         Height="700" 
         Width="1350"
@@ -14,9 +15,13 @@
         MinHeight="500"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
+        Icon="D:\University\4\oop\laba6_7\laba6_7\icons\museum.png"
+        Cursor = "ArrowCD"
         FontFamily="{StaticResource Merriweather}"
-        Background="#800000" Loaded="mainWindow_Loaded">
-
+        Background="#800000">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
     <Grid>
         <!--main-->
         <Grid.RowDefinitions>
@@ -74,7 +79,7 @@
                 Grid.Row="1"
                 Background="#9B4E4E"
                 >
-                <TextBox 
+                    <TextBox 
                     x:Name="Search"
                     Background="Transparent"
                    FontSize="14"
@@ -82,12 +87,10 @@
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Left"
                    Margin="15 0 40 0"
-                    
-                   >
-                    Поиск
-                </TextBox>
+                    Text="{x:Static p:Resources.Search}"
+                   />
 
-                <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\search.png" 
+                    <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\search.png" 
             HorizontalAlignment="Right"
                 VerticalAlignment="Center" 
                    Height="17"
@@ -99,13 +102,12 @@
         <!--filter-->
         <DockPanel          
             Grid.Column="1">
-            <Label FontSize="14"
+                <Label FontSize="14"
                    Foreground="#fff"
                    VerticalContentAlignment="Center"
-                   HorizontalContentAlignment="Right">
-                Фильтр
-            </Label>
-        </DockPanel>
+                   HorizontalContentAlignment="Right"
+                   Content="{x:Static p:Resources.Filter}" />
+            </DockPanel>
 
         <!--new-->
             <Button
@@ -117,8 +119,8 @@
                Height="26"
                Width="26"
                Background="Transparent"
-                Click="New_Click">
-        <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\new.png"/>
+               Command="{Binding OpenNewCommand}">
+                <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\new.png"/>
             </Button>
 
         <!--lenguages-->
@@ -128,21 +130,31 @@
                 <RowDefinition Height="0.25*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Viewbox
+                <Viewbox
                 Grid.Row="0"
-                HorizontalAlignment="Right">
-                <Label FontSize="16"
+                HorizontalAlignment="Right"
+                   >
+                    <Button Background="Transparent"
+                            x:Name="RU"
+                            Command="{Binding SetLanguageCommand}"
+                            CommandParameter="ru-RU">
+                    <Label FontSize="16"
                    Foreground="#fff">
                     RU
                 </Label>
+                  </Button>  
             </Viewbox>
             <Viewbox
                 Grid.Row="2"
                 HorizontalAlignment="Right">
+                    <Button x:Name="EN"
+                        Background="Transparent"
+                            Command="{Binding SetLanguageCommand}"
+                            CommandParameter="en">
                 <Label FontSize="16"
                    Foreground="#fff">
                     EN
-                </Label>
+                </Label></Button>
             </Viewbox>
         </Grid>
         </Grid>
@@ -153,7 +165,8 @@
 
         <ScrollViewer Grid.Row="3" Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <!--a card-->
-            <ItemsControl x:Name="PictureList">
+            <ItemsControl x:Name="PictureList" ItemsSource="{Binding Pictures}" DataContext="{Binding}"
+                          >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel ItemWidth="300" 
@@ -163,7 +176,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border>
-                            <ContentControl Template="{StaticResource Card}"
+                            <ContentControl Template="{DynamicResource Card}"
                                             />
                         </Border>
                     </DataTemplate>

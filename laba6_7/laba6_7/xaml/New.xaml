@@ -1,0 +1,160 @@
+﻿<Window x:Class="laba6_7.New"
+        x:ClassModifier="public"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba6_7"
+        xmlns:p = "clr-namespace:laba6_7.Properties"
+        mc:Ignorable="d"
+        Title="New" Height="600" Width="444"
+        Background="#9B4E4E"
+        FontFamily="{StaticResource Merriweather}"
+        >
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="45*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="6" BorderBrush="#800000"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="0"
+                Grid.RowSpan="4"/>
+        <Button x:Name="AddPicture" 
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="#A46363"
+                BorderBrush="#800000"
+                BorderThickness="3"
+                Margin="0 0 0 5"
+                Foreground="#fff"
+                FontSize="16"
+                Content="{x:Static p:Resources.AddPicture}"
+                Command="{Binding AddPictureCommand}"
+                />
+        <Image
+            x:Name="PictureImage"
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+                />
+        <Grid Grid.Row="2"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource NewTextboxes}"
+            x:Name="Name" 
+            Text="{Binding NewPicture.Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Style="{StaticResource NewTextboxes}"
+            x:Name="Author"
+                Text="{Binding NewPicture.Author, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource NewTextboxes}"
+            x:Name="Price" 
+                Text="{Binding NewPicture.Price, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+                Style="{StaticResource NewTextboxes}"
+            x:Name="Category"
+                Text="{Binding NewPicture.Category, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+                Style="{StaticResource NewTextboxes}"
+            x:Name="Count"
+                Text="{Binding NewPicture.Count, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource NewTextboxes}"
+            x:Name="Rating"
+                Text="{Binding NewPicture.Rating, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Name}"
+                       />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Author}"
+                       />
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Price}"
+                       />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Category}"
+                       />
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Count}"
+                       />
+            <TextBlock Grid.Row="5"
+                       Grid.Column="0" 
+                       Style="{StaticResource CardTextBlocks}"
+                       Text="{x:Static p:Resources.Rating}"
+                       />
+
+            <Button x:Name="Save"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Background="#800000" 
+                    Height="30"
+                    Width="90"
+                    Foreground="#fff"
+                    Content="{x:Static p:Resources.Save}"
+                    Command="{Binding AddPictureCommand}"
+                    CommandParameter="{Binding NewPicture}"
+                    />
+            <Button x:Name="Cancel"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Background="#800000" 
+                    Height="30"
+                    Width="90"
+                    Foreground="#fff"
+                    Content="{x:Static p:Resources.Cancel}"
+                    
+                    />
+        </Grid>
+    </Grid>
+</Window>

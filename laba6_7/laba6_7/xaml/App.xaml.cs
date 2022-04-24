@@ -13,6 +13,8 @@ namespace laba6_7
     /// </summary>
     public partial class App : Application
     {
-        
+        public App()
+        {
+        }
     }
 }
