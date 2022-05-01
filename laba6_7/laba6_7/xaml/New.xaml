@@ -42,7 +42,8 @@
                 Foreground="#fff"
                 FontSize="16"
                 Content="{x:Static p:Resources.AddPicture}"
-                Command="{Binding AddPictureCommand}"
+                Command="{Binding AddPicturePictureCommand}"
+                CommandParameter="{Binding NewPicture}"
                 />
         <Image
             x:Name="PictureImage"

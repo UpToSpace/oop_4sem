@@ -14,47 +14,45 @@ using System.Windows.Media.Imaging;
 
 namespace laba6_7
 {
-    class PicturesHandler : BindableBase
+    class PicturesHandler : ViewModelBase
     {
         private ObservableCollection<Picture> pictures;
         private Picture selectedPicture;
         private Picture newPicture;
         private Card card;
-        private New New;
+        private New NewCard;
 
         private string path = "pictures.json";
         public PicturesHandler()
         {
-            pictures = new ObservableCollection<Picture>();
             selectedPicture = new Picture();
             newPicture = new Picture();
+            pictures = new ObservableCollection<Picture>();
 
-            using (StreamReader sr = new StreamReader(path))
-            {
-                while(!sr.EndOfStream)
-                {
-                    pictures.Add(JsonConvert.DeserializeObject<Picture>(sr.ReadLine()));
-                }
-            }
+            GetOutOfFile();
         }
 
-        public ObservableCollection<Picture> Pictures { get => pictures; set => pictures = value; }
         public Picture NewPicture { get => newPicture; set => newPicture = value; }
         public Picture SelectedPicture { get => selectedPicture; set => selectedPicture = value; }
 
+        public ObservableCollection<Picture> Pictures { get => pictures;
+            set 
+            {
+                Set(ref pictures, value);
+            } }
         public void AddPicture(Picture picture)
         {
-            pictures.Add(picture);
-            using (StreamWriter sw = new StreamWriter(path))
+            Pictures.Add(picture);
+            
+            using (StreamWriter sw = new StreamWriter(path, true))
             {
                 sw.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(picture));
             }
-            //RaisePropertyChanged("AddPicture");
         }
         public void ShowNew()
         {
-            New = new New();
-            New.Show();
+            NewCard = new New();
+            NewCard.Show();
         }
         public void AddPicturePicture(Picture picture)
         {
@@ -62,16 +60,15 @@ namespace laba6_7
             fileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
             fileDialog.ShowDialog();
             picture.Image = fileDialog.FileName;
-            if (picture.Image != null)
-            {
-                New.AddPicture.Visibility = Visibility.Hidden; // с нью херь
-                New.PictureImage.Source = new BitmapImage(new Uri(picture.Image));
-            }
+            //if (picture.Image != null)
+            //{
+            //    NewCard.AddPicture.Visibility = Visibility.Hidden; // с нью херь
+            //    NewCard.PictureImage.Source = new BitmapImage(new Uri(picture.Image));
+            //}
         }
         public void RemovePicture(Picture picture)
         {
-            pictures.Remove(picture);
-            //RaisePropertyChanged("RemovePicture");
+            Pictures.Remove(picture);
             Application.Current.Windows[Application.Current.Windows.Count - 1].Close(); // so so thing
         }
 
@@ -84,18 +81,18 @@ namespace laba6_7
         }
         public void EditCard()
         {
-            card.Save.Visibility = Visibility.Visible;
-            card.Name.IsEnabled = true;
-            card.Author.IsEnabled = true;
-            card.Price.IsEnabled = true;
-            card.Category.IsEnabled = true;
-            card.Count.IsEnabled = true;
-            card.Rating.IsEnabled = true;
+            //card.Save.Visibility = Visibility.Visible;
+            //card.Name.IsEnabled = true;
+            //card.Author.IsEnabled = true;
+            //card.Price.IsEnabled = true;
+            //card.Category.IsEnabled = true;
+            //card.Count.IsEnabled = true;
+            //card.Rating.IsEnabled = true;
         }
         public void SaveChangesCard(Picture picture)
         {
-            pictures.Remove(selectedPicture);
-            pictures.Add(picture);
+            Pictures.Remove(selectedPicture);
+            Pictures.Add(picture);
             card.Save.Visibility = Visibility.Hidden;
             card.Name.IsEnabled = false;
             card.Author.IsEnabled = false;
@@ -114,6 +111,16 @@ namespace laba6_7
                 Application.Current.MainWindow.Close();
                 Application.Current.MainWindow = mainWindow;
                 mainWindow.Show();
+            }
+        }
+        private void GetOutOfFile()
+        {
+            using (StreamReader sr = new StreamReader(path, false))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Pictures.Add(JsonConvert.DeserializeObject<Picture>(sr.ReadLine()));
+                }
             }
         }
     }

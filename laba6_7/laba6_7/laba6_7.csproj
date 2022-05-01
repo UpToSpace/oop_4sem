@@ -62,8 +62,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="PicturesHandler.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
     <Compile Include="xaml\New.xaml.cs">
       <DependentUpon>New.xaml</DependentUpon>
     </Compile>

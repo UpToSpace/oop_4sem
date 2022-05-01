@@ -87,7 +87,7 @@
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Left"
                    Margin="15 0 40 0"
-                    Text="{x:Static p:Resources.Search}"
+                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                    />
 
                     <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\search.png" 
