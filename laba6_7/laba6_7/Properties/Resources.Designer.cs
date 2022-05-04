@@ -106,7 +106,7 @@ namespace laba6_7.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Filter.
+        ///   Ищет локализованную строку, похожую на Price.
         /// </summary>
         public static string Filter {
             get {

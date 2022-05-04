@@ -21,6 +21,7 @@ namespace laba6_7
         private Picture newPicture;
         private Card card;
         private New NewCard;
+        private int theme;
 
         private string path = "pictures.json";
         public PicturesHandler()
@@ -28,7 +29,7 @@ namespace laba6_7
             selectedPicture = new Picture();
             newPicture = new Picture();
             pictures = new ObservableCollection<Picture>();
-
+            theme = 0;
             GetOutOfFile();
         }
 
@@ -81,13 +82,13 @@ namespace laba6_7
         }
         public void EditCard()
         {
-            //card.Save.Visibility = Visibility.Visible;
-            //card.Name.IsEnabled = true;
-            //card.Author.IsEnabled = true;
-            //card.Price.IsEnabled = true;
-            //card.Category.IsEnabled = true;
-            //card.Count.IsEnabled = true;
-            //card.Rating.IsEnabled = true;
+            card.Save.Visibility = Visibility.Visible;
+            card.Name.IsEnabled = true;
+            card.Author.IsEnabled = true;
+            card.Price.IsEnabled = true;
+            card.Category.IsEnabled = true;
+            card.Count.IsEnabled = true;
+            card.Rating.IsEnabled = true;
         }
         public void SaveChangesCard(Picture picture)
         {
@@ -111,6 +112,22 @@ namespace laba6_7
                 Application.Current.MainWindow.Close();
                 Application.Current.MainWindow = mainWindow;
                 mainWindow.Show();
+            }
+        }
+        public void ChangeTheme()
+        {
+            switch (theme)
+            {
+                case 0:
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("./../dictionaries/Themes/RedTheme.xaml", UriKind.RelativeOrAbsolute);
+                    theme++;
+                    break;
+                case 1:
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("./../dictionaries/Themes/BlueTheme.xaml", UriKind.RelativeOrAbsolute);
+                    theme = 0;
+                    break;
+                default:
+                    break;
             }
         }
         private void GetOutOfFile()

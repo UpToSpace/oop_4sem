@@ -47,6 +47,10 @@ namespace laba6_7
                 string str = o as string;
                 picturesHandler.SetLanguage(str);
             });
+            SetThemeCommand = new RelayCommand(o =>
+            {
+                picturesHandler.ChangeTheme();
+            });
             SaveChangesCardCommand = new RelayCommand(o =>
             {
                 Picture picture = o as Picture;
@@ -75,6 +79,7 @@ namespace laba6_7
         public System.Windows.Input.ICommand EditCardCommand { get; }
         public System.Windows.Input.ICommand SaveChangesCardCommand { get; }
         public System.Windows.Input.ICommand SetLanguageCommand { get; }
+        public System.Windows.Input.ICommand SetThemeCommand { get; }
 
         public ObservableCollection<Picture> Pictures
         {
@@ -95,7 +100,17 @@ namespace laba6_7
                 OnPropertyChanged("Pictures");
             }
         }
-
+        private int filterSlider = 0;
+        public int FilterSlider
+        {
+            get { return filterSlider; }
+            set
+            {
+                Set(ref filterSlider, value);
+                pictures = new ObservableCollection<Picture>(picturesHandler.Pictures.Where(e => Convert.ToInt32(e.Price) < filterSlider));
+                OnPropertyChanged("Pictures");
+            }
+        }
         public Picture NewPicture => picturesHandler.NewPicture;
         public Picture SelectedPicture => picturesHandler.SelectedPicture;
 

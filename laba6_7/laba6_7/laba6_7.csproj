@@ -74,6 +74,14 @@
     <Compile Include="dictionaries\Items.xaml.cs">
       <DependentUpon>Items.xaml</DependentUpon>
     </Compile>
+    <Page Include="dictionaries\Themes\BlueTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dictionaries\Themes\RedTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="xaml\Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

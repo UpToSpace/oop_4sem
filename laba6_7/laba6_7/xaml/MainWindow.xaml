@@ -18,7 +18,7 @@
         Icon="D:\University\4\oop\laba6_7\laba6_7\icons\museum.png"
         Cursor = "ArrowCD"
         FontFamily="{StaticResource Merriweather}"
-        Background="#800000">
+        Style="{DynamicResource Theme}">
     <Window.DataContext>
         <local:ViewModel />
     </Window.DataContext>
@@ -36,7 +36,16 @@
             <ColumnDefinition Width="30*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
+        <Button 
+                    Grid.Row="0"
+            Grid.Column="1"
+                    Content="Theme"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="BlueViolet"
+            Foreground="#fff"
+            Command="{Binding SetThemeCommand}"
+                    />
         <!--navbar-->
         <Grid Grid.Row="1" Grid.Column="1" >
             <Grid.ColumnDefinitions>
@@ -45,36 +54,36 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        <Viewbox                
+            <Viewbox                
             Grid.Column="0"
             Grid.Row="1"
             Margin="3"
                HorizontalAlignment="Left"
                VerticalAlignment="Bottom">
-            <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\logo.png"
+                <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\logo.png"
                x:Name="logo"
                 Height="47"
                Width="47"           
                />
-        </Viewbox>
+            </Viewbox>
 
-        <!--a search-->
-        <Grid 
+            <!--a search-->
+            <Grid 
             Grid.Column="0"
             Grid.ColumnSpan="2"
             >
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid 
                 Grid.Column="1"
                 Grid.Row="1"
                 Background="#9B4E4E"
@@ -83,7 +92,6 @@
                     x:Name="Search"
                     Background="Transparent"
                    FontSize="14"
-                   Foreground="#fff"
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Left"
                    Margin="15 0 40 0"
@@ -96,25 +104,41 @@
                    Height="17"
                    Width="17"
                    Margin="0 0 12 0"/>
+                </Grid>
             </Grid>
-        </Grid>
 
-        <!--filter-->
-        <DockPanel          
-            Grid.Column="1">
+            <!--filter-->
+            <StackPanel          
+            Grid.Column="2">
+                <StackPanel Orientation="Horizontal">
                 <Label FontSize="14"
-                   Foreground="#fff"
-                   VerticalContentAlignment="Center"
-                   HorizontalContentAlignment="Right"
+                   VerticalContentAlignment="Top"
+                   HorizontalContentAlignment="Center"
                    Content="{x:Static p:Resources.Filter}" />
-            </DockPanel>
+                <TextBlock 
+                Grid.Row="1"
+                Grid.Column="2"
+                    FontSize="14"
+                    VerticalAlignment="Center"
+                Text="{Binding FilterSlider, StringFormat=&lt; {0}}" />    
+                </StackPanel>
+                <Slider 
+                    VerticalAlignment="Bottom"
+                    Value="{Binding FilterSlider, UpdateSourceTrigger=PropertyChanged}"
+                    TickFrequency="5"
+                    Maximum="10000"
+                    Minimum="0"
+                    TickPlacement="BottomRight"
+                    />
+            </StackPanel>
 
-        <!--new-->
+
+            <!--new-->
             <Button
                 x:Name="New"
-             Grid.Column="2"
+             Grid.Column="1"
                VerticalAlignment="Center"
-               HorizontalAlignment="Left"
+               HorizontalAlignment="Right"
                Margin="2 0 0 0"
                Height="26"
                Width="26"
@@ -123,13 +147,13 @@
                 <Image Source="D:\University\4\oop\laba6_7\laba6_7\icons\new.png"/>
             </Button>
 
-        <!--lenguages-->
-        <Grid Grid.Column="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="0.25*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <!--lenguages-->
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.25*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
                 <Viewbox
                 Grid.Row="0"
                 HorizontalAlignment="Right"
@@ -138,25 +162,24 @@
                             x:Name="RU"
                             Command="{Binding SetLanguageCommand}"
                             CommandParameter="ru-RU">
-                    <Label FontSize="16"
-                   Foreground="#fff">
-                    RU
-                </Label>
-                  </Button>  
-            </Viewbox>
-            <Viewbox
+                        <Label FontSize="16">
+                            RU
+                        </Label>
+                    </Button>
+                </Viewbox>
+                <Viewbox
                 Grid.Row="2"
                 HorizontalAlignment="Right">
                     <Button x:Name="EN"
                         Background="Transparent"
                             Command="{Binding SetLanguageCommand}"
                             CommandParameter="en">
-                <Label FontSize="16"
-                   Foreground="#fff">
-                    EN
-                </Label></Button>
-            </Viewbox>
-        </Grid>
+                        <Label FontSize="16">
+                            EN
+                        </Label>
+                    </Button>
+                </Viewbox>
+            </Grid>
         </Grid>
 
 
